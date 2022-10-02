@@ -1,22 +1,35 @@
+# 2210 npPrac01
+
+##### 깃 오류
+
+---
+
+LF will be replaced by CRLF the next time Git touches it
+
+git config --global core.autocrlf true
+
+---
+
  pr01-1
 
-- csv파일을 불러올 수 있다
-- 불러온 csv파일을 dataframe으로 앞뒤 n줄 출력할 수 있다
+- csv파일을 불러오기 pd.read_csv
+- 불러온 csv파일을 dataframe으로 앞뒤 n줄 출력하기 .head() .tail()
 
  pr01-2
 
-- dataframe의 수치 정보를 확인할 수 있다 describe()
-- dataframe 의 size를 확인할 수 있다 .shape
-- dataframe을 요약할 수 있다 .info()
+- dataframe의 수치 정보를 확인 .describe()
+- dataframe 의 size를 확인 .shape
+- dataframe을 요약 .info()
   - dtype, null, column 등
 
 pr01-3
 
-- df 특정 열에만 통계함수를 적용할 수 있다
+- df 특정 열에만 통계함수를 적용
+  - .num() .max() .min() .mean() .count()
 
 pr01-4
 
-- df 특정 열에 특성의 개수를 파악할 수 있다 
+- df 특정 열에 특성의 개수를 파악할 수 있다 .value_counts()
   - ex)  장르의 개수가 몇 개인지
 
 pr01-5
@@ -37,5 +50,14 @@ pr01-6
 - boolean indexing조건이 2개일때
   - 주제가 공포이면서 'title','genre' ,'time' 열이면서 시간이 90이하인 데이터 추출
 
+pr01-7 
 
-
+- groping 
+  - 그룹핑 하기 .groupby()
+  - 그룹의 개수 리턴 .ngroups
+  - 키값 확인 . groups.keys()
+  - 특정 키값의 value 전달 .get_group()
+- 그룹핑한 후 집계함수 사용
+- GroupBy.agg()를 사용해서 여러 열의 집계함수 동시에 보기
+  - .agg('집계함수')[['특정 열 나열']]
+  - .agg({'특정 열':통계함수, '특정 열2':통계함수2}) 각각을 다른 통계함수로 지정할 수 있음
