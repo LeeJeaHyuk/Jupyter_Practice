@@ -61,4 +61,35 @@ pr01-7
 - GroupBy.agg()를 사용해서 여러 열의 집계함수 동시에 보기
   - .agg('집계함수')[['특정 열 나열']]
   - .agg({'특정 열':통계함수, '특정 열2':통계함수2}) 각각을 다른 통계함수로 지정할 수 있음
-- 사용자 정의 함수를 만들어서 
+- 사용자 정의 함수를 만들어서
+
+\# pr01-8 
+
+- 시계열 데이터 사용
+
+- df 컬럼을 시계열 객체로 변환
+
+  - df['my_date']=pd.to_datetime(df['release_time'])
+
+- 변환한 시계열 객체 분철하기
+
+  - df['year'] = df['my_date'].dt.year
+
+- 연도별 최대 관객수 
+
+  - df.groupby('year')['box_off_num'].max()
+
+  
+
+\# pr01-9
+
+- 누락데이터 확인
+  - titanic.isnull().sum()
+- 누락데이터 제거 / 삭제
+  - titanic.dropna(axis=1,thresh = 400)
+  -  axis = 1 열 전체 삭제
+    - row(891)-thresh(400) = null값이 491보다 많으면 열 삭제
+    - res = titanic.dropna(axis=1,thresh = 400)
+  - axis = 0 행 전체 삭제
+    - column(15)-thresh(14) = 1  널값이 2개이상이면 해당 열 삭
+    - res02 = titanic.dropna(axis=0,thresh = 14)
