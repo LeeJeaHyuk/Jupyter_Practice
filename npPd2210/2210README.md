@@ -58,6 +58,8 @@ pr01-7
   - 키값 확인 . groups.keys()
   - 특정 키값의 value 전달 .get_group()
 - 그룹핑한 후 집계함수 사용
+  - df_screenRat['genre'].count()
+
 - GroupBy.agg()를 사용해서 여러 열의 집계함수 동시에 보기
   - .agg('집계함수')[['특정 열 나열']]
   - .agg({'특정 열':통계함수, '특정 열2':통계함수2}) 각각을 다른 통계함수로 지정할 수 있음
@@ -87,9 +89,15 @@ pr01-7
   - titanic.isnull().sum()
 - 누락데이터 제거 / 삭제
   - titanic.dropna(axis=1,thresh = 400)
-  -  axis = 1 열 전체 삭제
+  - axis = 1 열 전체 삭제
     - row(891)-thresh(400) = null값이 491보다 많으면 열 삭제
     - res = titanic.dropna(axis=1,thresh = 400)
   - axis = 0 행 전체 삭제
     - column(15)-thresh(14) = 1  널값이 2개이상이면 해당 열 삭
     - res02 = titanic.dropna(axis=0,thresh = 14)
+- 누락데이터 치환하기
+  - titanic['age'].fillna(titanic['age'].mean(), inplace = True)
+  - 최빈값으로 치환히기.idxmax()
+    - titanic['embarked'].value_counts(dropna=False).idxmax()
+  - 최소값 .idxmin()
+    - titanic['embarked'].value_counts(dropna=False).idxmin()
